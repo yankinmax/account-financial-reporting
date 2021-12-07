@@ -1,14 +1,15 @@
 #  Copyright 2021 Simone Rubino - Agile Business Group
 #  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests import TransactionCase
+from odoo.tests.common import TransactionCase
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, test_reports
 
 
 class TestAgedPartnerBalance(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.wizard_model = self.env["aged.partner.balance.report.wizard"]
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.wizard_model = cls.env["aged.partner.balance.report.wizard"]
 
     def test_report(self):
         """Check that report is produced correctly."""
